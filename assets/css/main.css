@@ -1,0 +1,121 @@
+html
+{
+  overflow-y: scroll;
+}
+
+h1
+{
+  color: #444444;
+  font-weight: bold;
+  font-size: 40px;
+  border-bottom: solid 5px #000000;
+}
+
+body
+{
+    margin: 30px auto;
+    margin-bottom: 0;
+    width: 86%;
+    font-size:1.03em;
+    font-family:"Helvetica", "Arial", sans-serif;
+    line-height:1.3;
+}
+
+@media (min-width: 900px)
+{
+  body
+  {
+    width: 800px;
+  }
+}
+
+a{text-decoration:none; }
+/* a:visited{color:#0E7F4D;} */
+a:visited{color:#0E547F;}
+a:link{color:#0E547F;}
+a:hover{text-decoration:underline;}
+
+#header 
+{
+    color: #000000;
+}
+
+#header:hover
+{
+  text-decoration: none;
+}
+
+a:hover
+{
+  text-decoration: underline;
+}
+
+h2
+{
+  text-decoration: bold;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+li
+{
+  margin-bottom: 10px;
+}
+
+li ul
+{
+  margin-top: 10px;
+}
+
+#footer .copyright {
+    color: #9fa3a6;
+    font-size: 0.75em;
+    text-align: center;
+}
+
+#footer .copyright a {
+    color: inherit;
+}
+
+.button {
+  display: inline-block;
+  background-color: transparent;
+  border-radius: 0.375em;
+  border: 0;
+  box-shadow: inset 0 0 0 2px #f56a6a;
+  height: 2em;
+  letter-spacing: 0.075em;
+  line-height: 2em;
+  padding: 0 1.5em;
+  color: #f56a6a;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: rgba(245, 106, 106, 0.05);
+  text-decoration: none; /* Remove underline from links */
+}
+
+code {
+    background: rgba(230, 235, 237, 0.25);
+    border-radius: 0.375em;
+    border: solid 1px rgba(210, 215, 217, 0.75);
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+    margin: 0 0.25em;
+    padding: 0.25em 0.65em;
+}
+
+pre {
+    -webkit-overflow-scrolling: touch;
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+    margin: 0.1em 0 0.1em 0;
+}
+
+    pre code {
+        display: block;
+        line-height: 1.75;
+        padding: 1em 1.5em;
+        overflow-x: auto;
+    }
