@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<title>Ayan Nath</title>
+<meta name="author" content="Ayan Nath">
+<meta name="description" content="Ayan Nath's home page">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/css/normalize.css">
+<link rel="stylesheet" href="assets/css/main.css?v=3">
+<link rel="shortcut icon" href="assets/icons/favicon.ico">
+
+<!-- MathJax -->
+<script src="assets/js/math.js" type="text/javascript"> </script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
+
+</head>
+<body>
+
+  <header>
+      <h1><a href="https://www.cmi.ac.in/~ayannath/" id=header>Ayan Nath</a></h1>
+  </header>
+
+<h2>Enabling deep sleep on notebooks</h2>
+Deep sleep (suspend to RAM, also called S3 state) is factory disabled on some modern
+notebooks, partly due to <a
+href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/modern-standby"
+target="_blank">modern standby</a> enforced by Intel and Microsoft. As a
+result, suspension is non-functional on some notebooks running GNU/Linux,
+especially with AMD processors.
+
+<h3>Supported sleep states</h3>
+You can see what sleep states your machine supports by reading <code>/sys/power/mem_sleep</code>. On my machine, only <code>s2idle</code> was reported, which is the most basic kind of sleep state implemented on a purely software level.
+<pre><code>$ cat /sys/power/mem_sleep 
+[s2idle] 
+</code></pre>
+
+<h3>Patching ACPI tables</h3>
+Fortunately, the Linux kernel has the ability to load patched ACPI tables during the boot process.
+<ol>
+    <li>Dump the DSDT table.
+<pre><code>$ cat /sys/firmware/acpi/tables/DSDT > dsdt.aml
+</code></pre>
+    </li>
+    <li>
+        Decompile the dumped table to obtain <code>dsdt.dsl</code>.
+<pre><code>$ iasl -d dsdt.aml</code> </pre>
+You need to install the <code>acpica</code> package for this step.
+<br/>
+<br/>
+    </li>
+    <li> Open <code>dsdt.dsl</code> with a text editor. Find a line which looks like:
+    <pre><code>DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)</code></pre>
+    and increment the version number by one:
+    <pre><code>DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072010)</code></pre>
+<li>
+    Search for the string "<code>S3</code>" and find a block which looks like
+    <pre><code> Name (XS3, Package (0x04)
+    {
+        0x03, 
+        Zero, 
+        Zero, 
+        Zero
+    })</pre></code>
+    and change it to 
+    <pre><code> Name (_S3, Package (0x04)
+    {
+        0x03, 
+        Zero, 
+        Zero, 
+        Zero
+    })</pre></code>
+    if needed.  Additionally, if there are any conditionals nested outside the above block, delete them so as to report affirmative S3 support even if the flag checks fail. 
+</li>
+<li>
+Recompile the file 
+<pre><code>$ iasl dsdt.dst</code> </pre>
+This will overwrite the old <code>.aml</code> file.
+</li>
+<li>
+Now we have to create a CPIO archive with the correct directory tree, which your boot loader can load on boot.
+<pre><code>$ mkdir -p kernel/firmware/acpi
+$ cp dsdt.aml kernel/firmware/acpi/.
+$ find kernel | cpio -H newc --create > dsdt-patch.img
+</pre></code>
+</li>
+<li>
+    Tell your boot loader to load the <code>dsdt-patch.img</code> file at boot. I use <code>systemd-boot</code> so I had to do the following:
+<pre><code>$ cp dsdt-patch.img /boot/.
+</pre></code>
+and add the line <pre><code>initrd	/dsdt-patch.img
+</pre></code>
+to the config file <code>/boot/loader/entries/*.conf</code> right after 
+<pre><code>initrd	/amd-ucode.img</code></pre>
+</li>
+<li>
+    Your default setting of sleep state may still be <code>s2idle</code>. To fix this, it is recommended to add the kernel parameter
+<pre><code>mem_sleep_default=deep</code></pre>
+</li>
+<li>
+Reboot and you should see 
+<pre><code>$ cat /sys/power/mem_sleep
+s2idle [deep]</code></pre>
+meaning deep sleep is now enabled.
+</li>
+</ol>
+<footer id="footer">
+    <p class="copyright">&copy; Ayan Nath. All rights reserved.</p>
+</footer>
+</body>
+</html>
