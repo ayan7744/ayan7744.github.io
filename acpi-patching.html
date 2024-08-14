@@ -74,7 +74,7 @@ You need to install the <code>acpica</code> package for this step.
 </li>
 <li>
 Recompile the file 
-<pre><code>$ iasl dsdt.dst</code> </pre>
+<pre><code>$ iasl dsdt.dsl</code> </pre>
 This will overwrite the old <code>.aml</code> file.
 </li>
 <li>
@@ -103,7 +103,14 @@ Reboot and you should see
 s2idle [deep]</code></pre>
 meaning deep sleep is now enabled.
 </li>
+
 </ol>
+Keep in mind that after each BIOS update you will need to repeat these steps!
+
+<h3>References: </h3>
+<ol>
+    <li><a href="https://wiki.archlinux.org/title/DSDT">https://wiki.archlinux.org/title/DSDT</a>
+
 <footer id="footer">
     <p class="copyright">&copy; Ayan Nath. All rights reserved.</p>
 </footer>
