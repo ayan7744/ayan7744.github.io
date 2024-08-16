@@ -84,14 +84,23 @@ $ cp dsdt.aml kernel/firmware/acpi/.
 $ find kernel | cpio -H newc --create > dsdt-patch.img
 </pre></code>
 </li>
-<li>
-    Tell your boot loader to load the <code>dsdt-patch.img</code> file at boot. I use <code>systemd-boot</code> so I had to do the following:
+<li> Do one of the following steps, whichever you prefer:
+    <ul>
+     <li> Tell your boot loader to load the <code>dsdt-patch.img</code> file at boot. I use <code>systemd-boot</code> so I had to do the following:
 <pre><code>$ cp dsdt-patch.img /boot/.
 </pre></code>
 and add the line <pre><code>initrd	/dsdt-patch.img
 </pre></code>
 to the config file <code>/boot/loader/entries/*.conf</code> right after 
 <pre><code>initrd	/amd-ucode.img</code></pre>
+     </li>
+     <li> Alternatively, you can use mkinitcpio's <code>acpi_override</code>
+         hook. <pre><code>$ mkdir /etc/initcpio/acpi_override
+$ cp dsdt.aml /etc/initcpio/acpi_override/</pre></code>
+         Add <code>acpi_override</code> to the <code>HOOKS</code> array in
+         <code>/etc/mkinitcpio.conf</code>:<pre><code>HOOKS=(... acpi_override)</code></pre>
+         Finally, regenerate the initramfs:<pre><code>$ mkinitcpio -P</code></pre>
+    </ul>
 </li>
 <li>
     Your default setting of sleep state may still be <code>s2idle</code>. To fix this, it is recommended to add the kernel parameter
@@ -110,6 +119,9 @@ Keep in mind that after each BIOS update you will need to repeat these steps!
 <h3>References: </h3>
 <ol>
     <li><a href="https://wiki.archlinux.org/title/DSDT">https://wiki.archlinux.org/title/DSDT</a>
+    <li><a
+            href="https://www.kernel.org/doc/Documentation/acpi/initrd_table_override.txt">https://www.kernel.org/doc/Documentation/acpi/initrd_table_override.txt</a>
+</ol>
 
 <footer id="footer">
     <p class="copyright">&copy; Ayan Nath. All rights reserved.</p>
