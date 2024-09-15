@@ -125,6 +125,8 @@ pre {
     height: auto;
     float: right;
     margin: 0 0 10px 10px;
+    border: solid;
+    border-width: 3px;
 }
 
 @media (min-width: 1024px) {
