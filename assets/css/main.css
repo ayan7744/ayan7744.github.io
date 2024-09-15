@@ -119,3 +119,31 @@ pre {
         padding: 1em 1.5em;
         overflow-x: auto;
     }
+
+.responsive-image {
+    width: 100%;
+    height: auto;
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+/* On larger screens (laptops), set max width to 200px */
+@media (min-width: 1024px) {
+    .responsive-image {
+        max-width: 180px;
+    }
+}
+
+/* On tablet screens (between 768px and 1024px), set max width to 150px */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .responsive-image {
+        max-width: 140px;
+    }
+}
+
+/* On smaller screens (phones), set max width to 100px */
+@media (max-width: 767px) {
+    .responsive-image {
+        max-width: 130px;
+    }
+}
