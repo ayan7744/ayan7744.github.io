@@ -146,3 +146,7 @@ pre {
         max-width: 140px;
     }
 }
+
+a:link img, a:visited img, a:hover img, a:active img {
+  border-color: black; /* Keeps the border color consistent on all link states */
+}
