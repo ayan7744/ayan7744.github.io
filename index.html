@@ -1,15 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
 <head>
-<meta charset="utf-8">
-<title>Ayan Nath</title>
-<meta name="author" content="Ayan Nath">
-<meta name="description" content="Ayan Nath's home page">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="assets/css/normalize.css">
-<link rel="stylesheet" href="assets/css/main.css?v=7">
-<link rel="shortcut icon" href="assets/icons/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ayan Nath</title>
+<link rel="stylesheet" href="assets/css/main.css">
 
+<style>
+:root {
+  --text-color: #1c1c1c;
+  --muted-color: #666;
+  --highlight-color: #1f6f3f;
+}
+</style>
 
 <!-- MathJax -->
 <script src="assets/js/math.js" type="text/javascript"> </script>
@@ -17,32 +18,40 @@
 
 </head>
 <body>
+  <div class="container">
+    <div class="header">
+      <div class="name-block">
+        <p><strong>Ayan Nath</strong><br>
+        MIT Mathematics<br>
+        ayannath[at]mit[dot]edu</p>
+      </div>
 
-<header>
-  <h1><a href="https://ayan7744.github.io/" id=header>Ayan Nath</a></h1>
-</header>
-<a href="assets/headshot-large.jpg" target="_blank">
-<img src="assets/headshot.jpg" class="responsive-image" alt=""/>
-</a>
-I am a math PhD student at <a href="https://math.mit.edu/" target="_blank">MIT</a>
-starting from Fall 2024.
-Previously, I was an undergraduate student at <a href="https://www.cmi.ac.in/" target="_blank">
-    Chennai Mathematical Institute</a>. 
-I am interested in number theory.
-<!-- Here's my <a href="./cv.pdf" target="_blank">CV</a>. -->
+      <nav>
+        <a class="nav-link active" data-target="home">home</a>
+        <a class="nav-link" data-target="seminars">seminars</a>
+        <a class="nav-link" data-target="notes">notes</a>
+        <a class="nav-link" data-target="misc">misc</a>
+      </nav>
+    </div>
 
-<br/>
-<br/>
+    <div class="content">
+      <div id="home">
+          <p>I am a math PhD student at <a href="https://math.mit.edu/" target="_blank">MIT</a>
+          starting from Fall 2024. </p>
+        <p>Previously, I was an undergraduate student at <a href="https://www.cmi.ac.in/" target="_blank">
+            Chennai Mathematical Institute</a>.</p>
+        <p>I am interested in number theory. </p>
+      </div>
 
-Email:
-$\texttt{ayannath}{}\texttt{@}\texttt{mit}{}{.}\texttt{edu}$
-<!-- MIT Building 2-490, 77 Mass. Ave., Cambridge, MA -->
-<h2>Seminars</h2>
+      <div id="seminars">
+
 <ul> 
     <li> <a href="./perfectoid">Reading seminar: Perfectoid Spaces (Fall 2024)</a></li>
 </ul>
+      </div>
 
-<h2>Notes</h2>
+      <div id="notes">
+
 <ul>
 <li>Almost Purity <a
             href="./perfectoid/almost-purity.pdf" target="_blank">[pdf]</a></li>
@@ -72,62 +81,47 @@ $\texttt{ayannath}{}\texttt{@}\texttt{mit}{}{.}\texttt{edu}$
     <li> (old) A Taste of Analytic Number Theory <a href="./olympiad-analytic-nt.pdf"
             target="_blank">[pdf]</a> <a href="https://artofproblemsolving.com/community/q1h2251201p17343711" target="_blank">[AoPS Page]</a></li>
 </ul>
-<!--
-<h2>Publications </h2>
-(Do not reflect current interests.)
-<ul>
-<!- -    <li>
-        <p>The Distribution of G.C.D.s of Shifted Primes and Lucas Sequences (with <a href="https://sites.google.com/view/abhishekjha02" target="_blank">Abhishek Jha</a>), <strong>Preprint (2022)</strong>  <a href="https://arxiv.org/abs/2207.00825" target="_blank">[arXiv]</a></p>
-    </li>
-- ->
-    <li> 
-        The moments of split greatest common divisors (with <a href="https://abhimathgeek.github.io/"
-        target="_blank">Abhishek Jha</a> and <a
-        href="https://etron.perso.math.cnrs.fr/"> Emanuele Tron</a>), <i>submitted</i> <a
-                                          href="https://arxiv.org/abs/2408.05820"
-                                          target="_blank">[arXiv]</a>
-    </li>
-    <li>
-        <p>On the Least Common Multiple of Polynomial Sequences at Prime
-        Arguments (with <a href="https://abhimathgeek.github.io/"
-        target="_blank">Abhishek Jha</a>), <strong>Int. J. Number Theory (2022)</strong> <a
-                                          href="https://doi.org/10.1142/S1793042122500622"
-                                          target="_blank">[doi]</a> <a
-                                          href="https://arxiv.org/abs/2106.06782"
-                                          target="_blank">[arXiv]</a>
-                                      <a
-                                          href="./lcm-slides.pdf"
-                                          target="_blank">[slides]</a></p>
-    </li>
-    <li>
-        <p>On Quotients of Values of Euler's Function on Factorials (with <a
-            href="https://abhimathgeek.github.io/" target="_blank">Abhishek
-            Jha</a>), <strong>Bull. Aust. Math. Soc. (2021)</strong> <a href="https://doi.org/10.1017/S0004972721000939" target="_blank">[doi]</a> <a href="https://arxiv.org/abs/2110.09875" target="_blank">[arXiv]</a></p>
-    </li>
-    <li>
-        <p>On the Divisibility $a!+b!\mid (a+b)!$, <strong>Amer. Math. Monthly (2022)</strong> <a href="https://doi.org/10.1080/00029890.2022.2010495" target="_blank">[doi]</a> <a href="./amm.pdf" target="_blank">[pdf]</a></p>
-    </li>
-</ul>
--->
-<h2>Odds and ends</h2>
+      </div>
+
+      <div id="misc">
+
 <ul>
     <li><a href="./acpi-patching.html">Patching ACPI tables to enable deep sleep on GNU/Linux</a><br/></li>
 <!-- 
     <li><a href="./faq.html">Olympiad FAQs (old, and possibly outdated)</a></li>
 -->
 </ul>
-<!-- <h2 id=contact>Get in touch</h2>
-The best way to reach me is through email, at
-$\texttt{ayannath}{}\texttt{@}\texttt{mit}{}{.}\texttt{edu}$.
-<br/>
-<br/>
-<ul>
-<li>Github: <a href="https://github.com/ayan7744/" target="_blank">ayan7744</a> </li>
-<li> AoPS: <a href="https://artofproblemsolving.com/community/user/362567"
-               target="_blank">ayan.nmath</a></li>
-</ul> -->
-<footer id="footer">
-    <p class="copyright">&copy; Ayan Nath. All rights reserved.</p>
-</footer>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.content > div');
+
+  function activateSection(targetId) {
+    links.forEach(l => {
+      l.classList.toggle('active', l.dataset.target === targetId);
+    });
+    sections.forEach(sec => {
+      sec.classList.toggle('active', sec.id === targetId);
+    });
+  }
+
+  // Handle nav link clicks
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      const target = link.dataset.target;
+      activateSection(target);
+      history.replaceState(null, null, `#${target}`); // update URL
+    });
+  });
+
+  // Handle loading from a hash (e.g. index.html#notes)
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.slice(1);
+      const target = hash && document.getElementById(hash) ? hash : 'home';
+      activateSection(target);
+    });
+</script>
 </body>
-</html>

@@ -1,26 +1,25 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
 <head>
-<meta charset="utf-8">
-<title>Ayan Nath &bullet; Seminars</title>
-<meta name="author" content="Ayan Nath">
-<meta name="description" content="Ayan Nath's home page">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../assets/css/normalize.css">
-<link rel="stylesheet" href="../assets/css/main.css?v=3">
-<link rel="shortcut icon" href="../assets/icons/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ayan Nath</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+    <script src="../assets/js/math.js" type="text/javascript"> </script>
+    <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
 
-<!-- MathJax -->
-<script src="../assets/js/math.js" type="text/javascript"> </script>
-<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
+<style>
+:root {
+  --text-color: #1c1c1c;
+  --muted-color: #666;
+  --highlight-color: #1f6f3f;
+}
+</style>
 
 <style>
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
-
+/*
 td, th {
   border: 1px solid #dddddd;
   text-align: left;
@@ -30,16 +29,29 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+*/
 </style>
 
 </head>
 <body>
+  <div class="container">
+    <div class="header">
+      <div class="name-block">
+        <p><strong>Ayan Nath</strong><br>
+        MIT Mathematics<br>
+        ayannath[at]mit[dot]edu</p>
+      </div>
 
-  <header>
-      <h1><a href="https://ayan7744.github.io" id=header>Ayan Nath</a></h1>
-  </header>
+      <nav>
+        <a class="nav-link" href="../index.html#home">home</a>
+        <a class="nav-link active" href="../index.html#seminars">seminars</a>
+        <a class="nav-link" href="../index.html#notes">notes</a>
+        <a class="nav-link" href="../index.html#misc">misc</a>
+      </nav>
+    </div>
 
-<h2>Reading seminar: Perfectoid Spaces (Fall 2024)</h2>
+    <div class="content">
+<h3>Reading seminar: Perfectoid Spaces (Fall 2024)</h3>
 Thursdays 2PM ET @ Harvard SC-232.
 
 <br>
@@ -115,9 +127,22 @@ Thursdays 2PM ET @ Harvard SC-232.
                                             href="https://doi.org/10.1007/s10240-012-0042-x"
                                             target="_blank" style="word-wrap: break-word;">https://doi.org/10.1007/s10240-012-0042-x</a></li>
 </ul>
+  </div>
 
-<footer id="footer">
-    <p class="copyright">&copy; Ayan Nath. All rights reserved.</p>
-</footer>
+  <script>
+    const links = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.content > div');
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+
+        const target = link.dataset.target;
+        sections.forEach(sec => {
+          sec.classList.toggle('active', sec.id === target);
+        });
+      });
+    });
+  </script>
 </body>
-</html>
