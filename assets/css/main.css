@@ -98,4 +98,10 @@ nav a.active {
     gap: 8px;
   }
 }
+
+
+code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
 </style>
