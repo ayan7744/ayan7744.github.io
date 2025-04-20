@@ -11,17 +11,32 @@
   --text-color: #1c1c1c;
   --muted-color: #666;
   --highlight-color: #1f6f3f;
+  --bg-color: #f9f9f9;
 }
 
 body {
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
-  background: #f9f9f9;
+  /*background: #f9f9f9;
+  color: var(--text-color);
+  */
+  background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
   padding: 40px 20px;
   display: flex;
   justify-content: center;
 }
+
+
+body {
+}
+
+/* Dark mode 
+body.dark {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+}
+*/
 
 .container {
   max-width: 700px;
@@ -103,5 +118,9 @@ nav a.active {
 code {
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+li { 
+    margin-bottom: 5px;
 }
 </style>
