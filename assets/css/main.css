@@ -1,53 +1,71 @@
 <style>
-.content > div {
-  display: none;
-}
-
-.content > div.active {
-  display: block;
-}
-
+/* --- 1. VARIABLES (THEME CONFIG) --- */
 :root {
   --text-color: #1c1c1c;
   --muted-color: #666;
   --highlight-color: #1f6f3f;
-  --bg-color: #f9f9f9;
+  --bg-color: linear-gradient(to bottom, #ffffff 0%, #f4f6f8 100%);
+/* --bg-color: linear-gradient(to bottom, #ffffff 0%, #a0b6d6 100%); */
 }
 
+/* DARK MODE OVERRIDES */
+[data-theme="dark"] {
+  --text-color: #e0e0e0;
+  --muted-color: #a0a0a0;
+  --highlight-color: #4caf50; 
+  
+  /* DARK MODE GRADIENT (Forest -> Midnight) */
+  --bg-color: linear-gradient(155deg, #143618 1%, #101830 100%);
+}
+
+/* --- 2. BASE LAYOUT --- */
 body {
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
-  /*background: #f9f9f9;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, sans-serif;
+  
+  /* Apply Background */
+  background: var(--bg-color);
+  background-attachment: fixed; /* CRITICAL: Keeps gradient visible */
   color: var(--text-color);
-  */
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  
   margin: 0;
-  padding: 40px 20px;
-  display: flex;
-  justify-content: center;
+  min-height: 100vh; /* Ensures gradient fills screen */
+  transition: color 0.3s;
 }
-
-
-body {
-}
-
-/* Dark mode 
-body.dark {
-  --bg-color: #121212;
-  --text-color: #f0f0f0;
-}
-*/
 
 .container {
-  max-width: 700px;
   width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
+/* --- 3. TYPOGRAPHY & LINKS --- */
 a {
   color: var(--text-color);
   text-decoration: underline;
 }
 
+code {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+li { 
+  margin-bottom: 10px;
+}
+
+.abstract-text {
+  margin-top: 10px;
+  font-size: 0.94rem;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.6;
+  max-width: 800px;
+}
+
+/* --- 4. HEADER & NAVIGATION --- */
 .header {
   display: flex;
   justify-content: space-between;
@@ -66,7 +84,7 @@ nav {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   font-size: 1rem;
 }
@@ -82,12 +100,19 @@ nav a.active {
   font-weight: 600;
 }
 
+/* --- 5. UTILITIES --- */
 .content > div {
   display: none;
+  animation: fadeIn 0.4s ease-out;
 }
 
 .content > div.active {
   display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .highlight {
@@ -95,10 +120,39 @@ nav a.active {
   padding: 1px 4px;
 }
 
-@media (max-width: 600px) {
+/* --- 6. THEME TOGGLE BUTTON --- */
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  transition: color 0.3s;
+}
+
+#theme-toggle:hover {
+  color: var(--highlight-color);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Icon Logic */
+.sun-icon { display: none; }
+.moon-icon { display: block; }
+
+[data-theme="dark"] .sun-icon { display: block; }
+[data-theme="dark"] .moon-icon { display: none; }
+
+
+/* --- 7. MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
   body {
     padding: 20px 16px;
-    font-size: 1rem;
   }
 
   .header {
@@ -107,106 +161,9 @@ nav a.active {
   }
 
   nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    font-size: 1rem;
-    gap: 8px;
-  }
-}
-
-
-code {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-li { 
-    margin-bottom: 10px;
-}
-
-.abstract-text {
-    margin-top: 10px;
-    font-size: 0.94rem;
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-    line-height: 1.6; /* Increased leading helps readability with justification */
-    max-width: 800px; /* Optional: standard line lengths improve evenness */
-  }
-
-:root {
-  --text-color: #1c1c1c;
-  --muted-color: #666;
-  --highlight-color: #1f6f3f;
-  --bg-color: #ffffff; /* Add this explicitly */
-}
-
-/* Dark Theme Overrides */
-[data-theme="dark"] {
-  --text-color: #e0e0e0;
-  --muted-color: #a0a0a0;
-  --highlight-color: #4caf50; /* Lighter green for contrast */
-  --bg-color: #121212;
-}
-
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Update your existing nav styling or add this */
-nav {
-  display: flex;           /* Enables flexbox layout */
-  align-items: center;     /* Vertically centers links and button */
-  gap: 15px;               /* Adds uniform spacing between items */
-}
-
-/* Button Styling */
-#theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;           /* Removes extra height from button */
-  align-items: center;
-  color: var(--text-color); /* Inherits theme color */
-  transition: color 0.3s;
-}
-
-#theme-toggle:hover {
-  color: var(--highlight-color);
-}
-
-/* Icon Sizing */
-.icon {
-  width: 20px;
-  height: 20px;
-}
-
-/* --- Icon Swapping Logic --- */
-
-/* Default (Light Mode): Show Moon, Hide Sun */
-.sun-icon { display: none; }
-.moon-icon { display: block; }
-
-/* Dark Mode Overrides: Show Sun, Hide Moon */
-[data-theme="dark"] .sun-icon { display: block; }
-[data-theme="dark"] .moon-icon { display: none; }
-
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;   /* Keeps your Name aligned to the Left */
-  }
-
-  nav {
-    margin-top: 0.5rem;
     width: 100%;
-    display: flex;             /* Ensure flex properties apply */
-    justify-content: flex-end; /* Pushes all links & button to the Right */
-    flex-wrap: wrap;           
-    gap: 15px;
+    justify-content: flex-start; /* Aligns links left on mobile */
+    gap: 12px;
   }
 }
 </style>
