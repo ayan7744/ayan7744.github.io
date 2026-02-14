@@ -4,8 +4,7 @@
   --text-color: #1c1c1c;
   --muted-color: #666;
   --highlight-color: #1f6f3f;
-  --bg-color: linear-gradient(to bottom, #ffffff 0%, #f4f6f8 100%);
-/* --bg-color: linear-gradient(to bottom, #ffffff 0%, #a0b6d6 100%); */
+--bg-color: linear-gradient(to bottom, #ffffff 0%, #dde1e7 100%);
 }
 
 /* DARK MODE OVERRIDES */
@@ -16,6 +15,13 @@
   
   /* DARK MODE GRADIENT (Forest -> Midnight) */
   --bg-color: linear-gradient(155deg, #143618 1%, #101830 100%);
+}
+
+[data-theme="light"] {
+  --text-color: #1c1c1c;
+  --muted-color: #666;
+  --highlight-color: #1f6f3f;
+--bg-color: linear-gradient(to bottom, #ffffff 0%, #dde1e7 100%);
 }
 
 /* --- 2. BASE LAYOUT --- */

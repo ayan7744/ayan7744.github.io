@@ -162,6 +162,9 @@
       const hash = window.location.hash.slice(1);
       const target = hash && document.getElementById(hash) ? hash : 'home';
       activateSection(target);
+    setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 1);
     });
 
   const toggleButton = document.getElementById('theme-toggle');
