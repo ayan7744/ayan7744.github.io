@@ -151,19 +151,13 @@ nav a.active {
 
 /* --- 7. MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-  body {
-    padding: 20px 16px;
+.container {
+    /* Was 40px 20px -> Change to smaller spacing */
+    padding: 20px 15px !important; 
   }
-
+  
   .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav {
-    width: 100%;
-    justify-content: flex-start; /* Aligns links left on mobile */
-    gap: 12px;
+    margin-bottom: 40px; /* Pulls the content closer to the nav */
   }
 }
 </style>
