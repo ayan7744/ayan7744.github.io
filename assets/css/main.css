@@ -134,4 +134,79 @@ li {
     max-width: 800px; /* Optional: standard line lengths improve evenness */
   }
 
+:root {
+  --text-color: #1c1c1c;
+  --muted-color: #666;
+  --highlight-color: #1f6f3f;
+  --bg-color: #ffffff; /* Add this explicitly */
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --text-color: #e0e0e0;
+  --muted-color: #a0a0a0;
+  --highlight-color: #4caf50; /* Lighter green for contrast */
+  --bg-color: #121212;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Update your existing nav styling or add this */
+nav {
+  display: flex;           /* Enables flexbox layout */
+  align-items: center;     /* Vertically centers links and button */
+  gap: 15px;               /* Adds uniform spacing between items */
+}
+
+/* Button Styling */
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;           /* Removes extra height from button */
+  align-items: center;
+  color: var(--text-color); /* Inherits theme color */
+  transition: color 0.3s;
+}
+
+#theme-toggle:hover {
+  color: var(--highlight-color);
+}
+
+/* Icon Sizing */
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Icon Swapping Logic --- */
+
+/* Default (Light Mode): Show Moon, Hide Sun */
+.sun-icon { display: none; }
+.moon-icon { display: block; }
+
+/* Dark Mode Overrides: Show Sun, Hide Moon */
+[data-theme="dark"] .sun-icon { display: block; }
+[data-theme="dark"] .moon-icon { display: none; }
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;   /* Keeps your Name aligned to the Left */
+  }
+
+  nav {
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex;             /* Ensure flex properties apply */
+    justify-content: flex-end; /* Pushes all links & button to the Right */
+    flex-wrap: wrap;           
+    gap: 15px;
+  }
+}
 </style>
