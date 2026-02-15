@@ -21,7 +21,7 @@
   --text-color: #1c1c1c;
   --muted-color: #666;
   --highlight-color: #1f6f3f;
---bg-color: #ffffff;
+  --bg-color: #e0e0e0;
 }
 
 /* --- 2. BASE LAYOUT --- */
@@ -34,7 +34,7 @@ body {
   color: var(--text-color);
   
   margin: 0;
-  min-height: 100vh; /* Ensures gradient fills screen */
+  min-height: 100dvh; /* Ensures gradient fills screen */
   transition: color 0.3s;
 }
 
