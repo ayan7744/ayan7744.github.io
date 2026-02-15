@@ -115,11 +115,11 @@ nav a.active {
 .content > div.active {
   display: block;
 }
-
+/*
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
-}
+} */
 
 .highlight {
   border: 1px solid #ccc;
