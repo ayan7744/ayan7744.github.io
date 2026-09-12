@@ -1,0 +1,11 @@
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: CCBot
+Disallow: /assets/preprints/
+
+User-agent: *
+Allow: /
