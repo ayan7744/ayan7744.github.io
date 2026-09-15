@@ -1,73 +1,62 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ayan Nath</title>
-<link rel="stylesheet" href="assets/css/main.css?v=4">
-<meta name="author" content="Ayan Nath">
-<meta name="description" content="Ayan Nath's home page">
-<link rel="shortcut icon" href="assets/icons/favicon.ico">
-
-<!-- MathJax -->
-<script src="assets/js/math.js" type="text/javascript"> </script>
-<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"> </script>
-
+  <meta name="author" content="Ayan Nath">
+  <meta name="description" content="Ayan Nath's home page">
+  <link rel="shortcut icon" href="assets/icons/favicon.ico">
+  <script src="assets/js/theme.js?v=1"></script>
+  <link rel="stylesheet" href="assets/css/main.css?v=5">
+  <script src="assets/js/site.js?v=1" defer></script>
+  <script src="assets/js/math.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <div class="name-block">
-        <p><strong>Ayan Nath</strong><br>
-        MIT Mathematics<br>
-        ayannath at mit.edu
-        </p>
+    <header class="site-header">
+      <div class="topbar">
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="nav-link active" data-target="home" href="#home" aria-current="page">home</a>
+          <a class="nav-link" data-target="research" href="#research">research</a>
+          <a class="nav-link" data-target="seminars" href="#seminars">seminars</a>
+          <a class="nav-link" data-target="notes" href="#notes">notes</a>
+          <a class="nav-link" data-target="misc" href="#misc">misc</a>
+        </nav>
+        <button id="theme-toggle" type="button" aria-label="Switch color theme">
+          <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+          </svg>
+          <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </div>
-
-      <nav>
-        <a class="nav-link active" data-target="home">home</a>
-        <a class="nav-link" data-target="research">research</a>
-        <a class="nav-link" data-target="seminars">seminars</a>
-        <a class="nav-link" data-target="notes">notes</a>
-        <a class="nav-link" data-target="misc">misc</a>
-
-  <button id="theme-toggle" aria-label="Toggle Dark Mode">
-    <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-    <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-  </button>
-      </nav>
-    </div>
-
-    <div class="content">
-      <div id="home">
+      <h1 class="site-title"><a href="index.html#home">Ayan Nath</a></h1>
+    </header>
+    <main class="content">
+      <section class="section active" id="home" data-section aria-label="About">
+        <h2 class="section-heading">About</h2>
           <p>I am a PhD student at <a href="https://math.mit.edu/" target="_blank">MIT</a>
           since Fall 2024. </p>
-          My advisors are <a href="https://math.mit.edu/~poonen/"
+          <p>My advisors are <a href="https://math.mit.edu/~poonen/"
                              target="_blank">Bjorn Poonen</a> and <a
                              href="https://www.keerthimadapusi.com/"
-                             target="_blank">Keerthi Madapusi</a>.
+                             target="_blank">Keerthi Madapusi</a>.</p>
         <p>Previously, I was an undergraduate student at <a href="https://www.cmi.ac.in/" target="_blank">
             Chennai Mathematical Institute</a>.</p>
         <p>I am interested in number theory.</p>
-        <p>Here's my <a href="cv.pdf" target=_blank">CV</a>.</p>
-      </div>
+        <p>Here's my <a href="cv.pdf" target="_blank">CV</a>.</p>
+      </section>
 
-      <div id="research">
+      <section class="section" id="research" data-section aria-label="Research">
+        <h2 class="section-heading">Research</h2>
 
           <!-- Versions hosted here are more up-to-date than those on the arXiv. -->
 <ul>
-    <li><b>Perfectoid Shimura Varieties of Exceptional Type</b> <i>(draft)</i>
+    <li><b class="paper-title">Perfectoid Shimura Varieties of Exceptional Type</b> <i class="paper-status">(draft)</i>
 <div class="abstract-text">
     We show that all minimally compactified Shimura varieties at infinite level are perfectoid spaces, including those of exceptional type for sufficiently large primes.
 </div>
@@ -77,7 +66,7 @@
     The $\ell$-adic cohomology ring of an Artin stack need not be finitely generated. We prove that, under natural geometric hypotheses, the algebra of self-extensions of its intersection complex is nevertheless finitely generated and Noetherian. For smooth stacks, this gives finite generation of the cohomology ring itself. We also construct examples of torus gerbes over nodal curves where the cohomology ring fails to be finitely generated, answering a question of Hansen.
 </div>
     </li> -->
-    <li><b>Compactification of Reductive Group Schemes</b> <a href="./assets/preprints/group-compactification.pdf" target="_blank">[pdf]</a> <a href="https://arxiv.org/abs/2601.22462" target="_blank">[arXiv]</a>
+    <li><b class="paper-title">Compactification of Reductive Group Schemes</b> <span class="paper-links"><a class="resource-link" href="./assets/preprints/group-compactification.pdf" target="_blank">pdf</a> <a class="resource-link" href="https://arxiv.org/abs/2601.22462" target="_blank">arXiv</a></span>
 <div class="abstract-text">
     We prove that any isotrivial reductive group scheme over an arbitrary base admits a smooth projective equivariant compactification, verifying a conjecture of Česnavičius. In the adjoint case, we recover fiberwise the wonderful compactification. Finally, we give an example of a non-isotrivial torus admitting no equivariant compactification.
 </div>
@@ -93,112 +82,59 @@
     <li><b>On the divisibility $a!+b!\mid (a+b)!$</b> <a
             href="https://doi.org/10.1080/00029890.2022.2010495" target="_blank">[journal]</a></li>
 </ul> -->
-      </div>
+      </section>
 
-      <div id="seminars">
+      <section class="section" id="seminars" data-section aria-label="Seminars">
+        <h2 class="section-heading">Seminars</h2>
 
 <ul> 
     <li> <a href="./perfectoid">Reading seminar: Perfectoid Spaces (Fall 2024)</a></li>
 </ul>
-      </div>
+      </section>
 
-      <div id="notes">
+      <section class="section" id="notes" data-section aria-label="Notes">
+        <h2 class="section-heading">Notes</h2>
 
 <ul>
-<li>Almost Purity <a
-            href="./perfectoid/almost-purity.pdf" target="_blank">[pdf]</a></li>
-<li>Tilting equivalence for perfectoid algebras <a
-            href="./perfectoid/tilting-equivalence.pdf" target="_blank">[pdf]</a></li>
+<li>Almost Purity <a class="resource-link"
+            href="./perfectoid/almost-purity.pdf" target="_blank">pdf</a></li>
+<li>Tilting equivalence for perfectoid algebras <a class="resource-link"
+            href="./perfectoid/tilting-equivalence.pdf" target="_blank">pdf</a></li>
 
-    <li>Special cycles on unitary Shimura varieties <a
-            href="./theta-series.pdf" target="_blank">[pdf]</a></li>
-    <li>Hodge-Tate decomposition for abelian varieties with good reduction <a
-            href="./hodge-tate-decomposition.pdf" target="_blank">[pdf]</a></li>
-    <li>Moduli schemes of elliptic curves <a
-            href="./deligne-rapoport.pdf" target="_blank">[pdf]</a></li>
-    <li>Deligne's construction of $\ell$-adic Galois representations attached to normalized cuspidal newforms of weight $k\ge 2$ <a
-            href="./deligne-galois-reps.pdf" target="_blank">[pdf]</a></li>
-    <li>Ribet's converse to Herbrand's theorem <a
-            href="./ribet-herbrand.pdf" target="_blank">[pdf]</a></li>
-    <li>Galois representations attached to modular forms of weight 1 <a
-            href="./deligne-serre.pdf" target="_blank">[pdf]</a></li>
-    <li>Tate uniformization of Drinfeld modules <a href="./tate-uniformization.pdf" target="_blank">[pdf]</a></li>
+    <li>Special cycles on unitary Shimura varieties <a class="resource-link"
+            href="./theta-series.pdf" target="_blank">pdf</a></li>
+    <li>Hodge-Tate decomposition for abelian varieties with good reduction <a class="resource-link"
+            href="./hodge-tate-decomposition.pdf" target="_blank">pdf</a></li>
+    <li>Moduli schemes of elliptic curves <a class="resource-link"
+            href="./deligne-rapoport.pdf" target="_blank">pdf</a></li>
+    <li>Deligne's construction of $\ell$-adic Galois representations attached to normalized cuspidal newforms of weight $k\ge 2$ <a class="resource-link"
+            href="./deligne-galois-reps.pdf" target="_blank">pdf</a></li>
+    <li>Ribet's converse to Herbrand's theorem <a class="resource-link"
+            href="./ribet-herbrand.pdf" target="_blank">pdf</a></li>
+    <li>Galois representations attached to modular forms of weight 1 <a class="resource-link"
+            href="./deligne-serre.pdf" target="_blank">pdf</a></li>
+    <li>Tate uniformization of Drinfeld modules <a class="resource-link" href="./tate-uniformization.pdf" target="_blank">pdf</a></li>
     <li>An introduction to the mod $p$ local Langlands correspondence for
-        $\text{GL}_2(\mathbb Q_p)$ <a href="./vsrp-report.pdf" target="_blank">[pdf]</a> <a href="./vsrp-slides.pdf" target="_blank">[slides]</a></li>
-    <li>Alterations <a
-            href="./alterations.pdf" target="_blank">[pdf]</a> <a
-            href="./alterations-slides.pdf" target="_blank">[slides]</a> 
+        $\text{GL}_2(\mathbb Q_p)$ <a class="resource-link" href="./vsrp-report.pdf" target="_blank">pdf</a> <a class="resource-link" href="./vsrp-slides.pdf" target="_blank">slides</a></li>
+    <li>Alterations <a class="resource-link"
+            href="./alterations.pdf" target="_blank">pdf</a> <a class="resource-link"
+            href="./alterations-slides.pdf" target="_blank">slides</a>
     </li>
-    <li>The Hochster-Roberts theorem <a href="./hochster-roberts.pdf" target="_blank">[pdf]</a> </li>
-    <li> (old) Olympiad handout on analytic number theory <a href="./olympiad-analytic-nt.pdf"
-            target="_blank">[pdf]</a> <a href="https://artofproblemsolving.com/community/q1h2251201p17343711" target="_blank">[AoPS Page]</a></li>
+    <li>The Hochster-Roberts theorem <a class="resource-link" href="./hochster-roberts.pdf" target="_blank">pdf</a> </li>
+    <li> (old) Olympiad handout on analytic number theory <a class="resource-link" href="./olympiad-analytic-nt.pdf"
+            target="_blank">pdf</a> <a class="resource-link" href="https://artofproblemsolving.com/community/q1h2251201p17343711" target="_blank">AoPS Page</a></li>
 </ul>
-      </div>
+      </section>
 
-      <div id="misc">
+      <section class="section" id="misc" data-section aria-label="Misc">
+        <h2 class="section-heading">Misc</h2>
 
 <ul>
     <li><a href="./acpi-patching.html">Deep sleep on GNU/Linux via
             patched ACPI tables</a><br/></li>
 </ul>
-      </div>
-    </div>
-
+      </section>
+    </main>
   </div>
-    
-<!-- <footer>
-    <p>&copy; 2026 Ayan Nath</p>
-</footer> -->
-
-<script>
-  const links = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('.content > div');
-
-  function activateSection(targetId) {
-    links.forEach(l => {
-      l.classList.toggle('active', l.dataset.target === targetId);
-    });
-    sections.forEach(sec => {
-      sec.classList.toggle('active', sec.id === targetId);
-    });
-  }
-
-  // Handle nav link clicks
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      const target = link.dataset.target;
-      activateSection(target);
-      history.replaceState(null, null, `#${target}`); // update URL
-    });
-  });
-
-  // Handle loading from a hash (e.g. index.html#notes)
-    window.addEventListener('load', () => {
-      const hash = window.location.hash.slice(1);
-      const target = hash && document.getElementById(hash) ? hash : 'home';
-      activateSection(target);
-    setTimeout(() => {
-          window.scrollTo(0, 0);
-        }, 1);
-    });
-
-  const toggleButton = document.getElementById('theme-toggle');
-  const htmlElement = document.documentElement;
-
-  // 1. Check localStorage or System Preference
-  const currentTheme = localStorage.getItem('theme') || 
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  
-  // 2. Apply initial theme
-  if (currentTheme) {
-    htmlElement.setAttribute('data-theme', currentTheme);
-  }
-
-  // 3. Toggle Logic
-  toggleButton.addEventListener('click', () => {
-    const newTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
-</script>
 </body>
+</html>

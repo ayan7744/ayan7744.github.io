@@ -1,83 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ayan Nath</title>
-  <link rel="stylesheet" href="https://ayan7744.github.io/assets/css/main.css?v=2">
-
+  <title>Page not found | Ayan Nath</title>
+  <meta name="author" content="Ayan Nath">
+  <meta name="description" content="The requested page could not be found.">
+  <base href="/">
+  <script>
+    // Hosted 404s can appear at any URL; local files use their own directory.
+    if (window.location.protocol === 'file:') {
+      document.querySelector('base').href = new URL('.', window.location.href).href;
+    }
+  </script>
+  <link rel="shortcut icon" href="assets/icons/favicon.ico">
+  <script src="assets/js/theme.js?v=1"></script>
+  <link rel="stylesheet" href="assets/css/main.css?v=6">
+  <script src="assets/js/site.js?v=1" defer></script>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <div class="name-block">
-        <p><strong>Ayan Nath</strong><br>
-        MIT Mathematics<br>
-        ayannath at mit.edu</p>
+    <header class="site-header">
+      <div class="topbar">
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="nav-link" href="index.html#home">home</a>
+          <a class="nav-link" href="index.html#research">research</a>
+          <a class="nav-link" href="index.html#seminars">seminars</a>
+          <a class="nav-link" href="index.html#notes">notes</a>
+          <a class="nav-link" href="index.html#misc">misc</a>
+        </nav>
+        <button id="theme-toggle" type="button" aria-label="Switch color theme">
+          <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+          </svg>
+          <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </div>
+      <h1 class="site-title"><a href="index.html#home">Ayan Nath</a></h1>
+    </header>
+    <main class="content article">
+      <span class="error-symbol" aria-hidden="true">&NotExists;</span>
+      <p>The page you are looking for does not exist. <a href="index.html#home">Return home</a>.</p>
 
-      <nav>
-        <a class="nav-link" href="https://ayan7744.github.io/index.html#home">home</a>
-        <a class="nav-link" href="https://ayan7744.github.io/index.html#research">research</a>
-        <a class="nav-link" href="https://ayan7744.github.io/index.html#seminars">seminars</a>
-        <a class="nav-link" href="https://ayan7744.github.io/index.html#notes">notes</a>
-        <a class="nav-link" href="https://ayan7744.github.io/index.html#misc">misc</a>
-
-  <button id="theme-toggle" aria-label="Toggle Dark Mode">
-    <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-    <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-  </button>
-      </nav>
-    </div>
-
-    <div class="content" style="text-align: center;">
-    <span style="font-size:50vh;">
-        &NotExists;
-    </span>
+    </main>
   </div>
-  <script>
-    const links = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.content > div');
-
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        links.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-
-        const target = link.dataset.target;
-        sections.forEach(sec => {
-          sec.classList.toggle('active', sec.id === target);
-        });
-      });
-    });
-
-  const toggleButton = document.getElementById('theme-toggle');
-  const htmlElement = document.documentElement;
-
-  // 1. Check localStorage or System Preference
-  const currentTheme = localStorage.getItem('theme') || 
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  
-  // 2. Apply initial theme
-  if (currentTheme) {
-    htmlElement.setAttribute('data-theme', currentTheme);
-  }
-
-  // 3. Toggle Logic
-  toggleButton.addEventListener('click', () => {
-    const newTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
-  </script>
 </body>
+</html>

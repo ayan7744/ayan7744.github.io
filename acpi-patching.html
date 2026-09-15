@@ -1,51 +1,41 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ayan Nath</title>
-  <link rel="stylesheet" href="assets/css/main.css?v=4">
-<meta name="author" content="Ayan Nath">
-<meta name="description" content="Ayan Nath's home page">
-<link rel="shortcut icon" href="assets/icons/favicon.ico">
-
+  <title>Enabling deep sleep on notebooks | Ayan Nath</title>
+  <meta name="author" content="Ayan Nath">
+  <meta name="description" content="Enabling deep sleep on GNU/Linux notebooks by patching ACPI tables.">
+  <link rel="shortcut icon" href="assets/icons/favicon.ico">
+  <script src="assets/js/theme.js?v=1"></script>
+  <link rel="stylesheet" href="assets/css/main.css?v=5">
+  <script src="assets/js/site.js?v=1" defer></script>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <div class="name-block">
-        <p><strong>Ayan Nath</strong><br>
-        MIT Mathematics<br>
-        ayannath at mit.edu</p>
+    <header class="site-header">
+      <div class="topbar">
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="nav-link" href="index.html#home">home</a>
+          <a class="nav-link" href="index.html#research">research</a>
+          <a class="nav-link" href="index.html#seminars">seminars</a>
+          <a class="nav-link" href="index.html#notes">notes</a>
+          <a class="nav-link active" href="index.html#misc" aria-current="page">misc</a>
+        </nav>
+        <button id="theme-toggle" type="button" aria-label="Switch color theme">
+          <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
+          </svg>
+          <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </div>
-
-      <nav>
-        <a class="nav-link" href="index.html#home">home</a>
-        <a class="nav-link" href="index.html#research">research</a>
-        <a class="nav-link" href="index.html#seminars">seminars</a>
-        <a class="nav-link" href="index.html#notes">notes</a>
-        <a class="nav-link active" href="index.html#misc">misc</a>
-
-  <button id="theme-toggle" aria-label="Toggle Dark Mode">
-    <svg class="icon sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="5"></circle>
-      <line x1="12" y1="1" x2="12" y2="3"></line>
-      <line x1="12" y1="21" x2="12" y2="23"></line>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-      <line x1="1" y1="12" x2="3" y2="12"></line>
-      <line x1="21" y1="12" x2="23" y2="12"></line>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-    </svg>
-    <svg class="icon moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-    </svg>
-  </button>
-      </nav>
-    </div>
-
-    <div class="content">
-<h3>Enabling deep sleep on notebooks</h3>
+      <h1 class="site-title"><a href="index.html#home">Ayan Nath</a></h1>
+    </header>
+    <main class="content article">
+<h2>Enabling deep sleep on notebooks</h2>
 Deep sleep (suspend to RAM, also called S3 state) is factory disabled on some modern
 notebooks, partly due to <a
 href="https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/modern-standby"
@@ -53,13 +43,13 @@ target="_blank">modern standby</a> enforced by Intel and Microsoft. As a
 result, suspension is non-functional on some notebooks running GNU/Linux,
 especially with AMD processors.
 
-<h3>Supported sleep states</h3>
+<h2>Supported sleep states</h2>
 You can see what sleep states your machine supports by reading <code>/sys/power/mem_sleep</code>. On my machine, only <code>s2idle</code> was reported, which is the most basic kind of sleep state implemented on a purely software level.
 <pre><code>$ cat /sys/power/mem_sleep 
 [s2idle] 
 </code></pre>
 
-<h3>Patching ACPI tables</h3>
+<h2>Patching ACPI tables</h2>
 Fortunately, the Linux kernel has the ability to load patched ACPI tables during the boot process.
 <ol>
     <li>Dump the DSDT table.
@@ -77,6 +67,7 @@ You need to install the <code>acpica</code> package for this step.
     <pre><code>DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072009)</code></pre>
     and increment the version number by one:
     <pre><code>DefinitionBlock ("", "DSDT", 2, "_ASUS_", "Notebook", 0x01072010)</code></pre>
+    </li>
 <li>
     Search for the string "<code>S3</code>" and find a block which looks like
     <pre><code> Name (XS3, Package (0x04)
@@ -85,7 +76,7 @@ You need to install the <code>acpica</code> package for this step.
         Zero, 
         Zero, 
         Zero
-    })</pre></code>
+    })</code></pre>
     and change it to 
     <pre><code> Name (_S3, Package (0x04)
     {
@@ -93,7 +84,7 @@ You need to install the <code>acpica</code> package for this step.
         Zero, 
         Zero, 
         Zero
-    })</pre></code>
+    })</code></pre>
     if needed.  Additionally, if there are any conditionals nested outside the above block, delete them so as to report affirmative S3 support even if the flag checks fail. 
 </li>
 <li>
@@ -106,24 +97,25 @@ Now we have to create a CPIO archive with the correct directory tree, which your
 <pre><code>$ mkdir -p kernel/firmware/acpi
 $ cp dsdt.aml kernel/firmware/acpi/.
 $ find kernel | cpio -H newc --create > dsdt-patch.img
-</pre></code>
+</code></pre>
 </li>
 <li> Do one of the following steps, whichever you prefer:
     <ul>
      <li> Tell your boot loader to load the <code>dsdt-patch.img</code> file at boot. I use <code>systemd-boot</code> so I had to do the following:
 <pre><code>$ cp dsdt-patch.img /boot/.
-</pre></code>
+</code></pre>
 and add the line <pre><code>initrd	/dsdt-patch.img
-</pre></code>
+</code></pre>
 to the config file <code>/boot/loader/entries/*.conf</code> right after 
 <pre><code>initrd	/amd-ucode.img</code></pre>
      </li>
      <li> Alternatively, you can use mkinitcpio's <code>acpi_override</code>
          hook. <pre><code>$ mkdir /etc/initcpio/acpi_override
-$ cp dsdt.aml /etc/initcpio/acpi_override/</pre></code>
+$ cp dsdt.aml /etc/initcpio/acpi_override/</code></pre>
          Add <code>acpi_override</code> to the <code>HOOKS</code> array in
          <code>/etc/mkinitcpio.conf</code>:<pre><code>HOOKS=(... acpi_override)</code></pre>
          Finally, regenerate the initramfs:<pre><code>$ mkinitcpio -P</code></pre>
+     </li>
     </ul>
 </li>
 <li>
@@ -140,48 +132,15 @@ meaning deep sleep is now enabled.
 </ol>
 Keep in mind that after each BIOS update you will need to repeat these steps!
 
-<h3>References: </h3>
+<h2>References: </h2>
 <ol>
-    <li><a href="https://wiki.archlinux.org/title/DSDT">https://wiki.archlinux.org/title/DSDT</a>
+    <li><a href="https://wiki.archlinux.org/title/DSDT">https://wiki.archlinux.org/title/DSDT</a></li>
     <li><a
             href="https://www.kernel.org/doc/Documentation/acpi/initrd_table_override.txt"
-            style="word-wrap: break-word;">https://www.kernel.org/doc/Documentation/acpi/initrd_table_override.txt</a>
+            >https://www.kernel.org/doc/Documentation/acpi/initrd_table_override.txt</a></li>
 </ol>
+
+    </main>
   </div>
-
-  <script>
-    const links = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('.content > div');
-
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        links.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-
-        const target = link.dataset.target;
-        sections.forEach(sec => {
-          sec.classList.toggle('active', sec.id === target);
-        });
-      });
-    });
-
-  const toggleButton = document.getElementById('theme-toggle');
-  const htmlElement = document.documentElement;
-
-  // 1. Check localStorage or System Preference
-  const currentTheme = localStorage.getItem('theme') || 
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  
-  // 2. Apply initial theme
-  if (currentTheme) {
-    htmlElement.setAttribute('data-theme', currentTheme);
-  }
-
-  // 3. Toggle Logic
-  toggleButton.addEventListener('click', () => {
-    const newTheme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  });
-  </script>
 </body>
+</html>
