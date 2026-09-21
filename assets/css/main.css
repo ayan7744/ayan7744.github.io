@@ -152,6 +152,17 @@ button { font: inherit; }
 .paper-title { font-size: 1.05em; }
 .paper-status { color: var(--muted-color); font-size: 0.9em; }
 .paper-links { display: inline-block; }
+.research-subheading {
+  margin: 44px 0 22px;
+  color: var(--muted-color);
+  font-size: 1em;
+  font-weight: 400;
+}
+.paper-venue {
+  margin-top: 6px;
+  color: var(--muted-color);
+  font-size: 0.9em;
+}
 .resource-link {
   margin-inline-start: 0.3em;
   color: var(--highlight-color);
